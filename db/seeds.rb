@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "open-uri"
+require "faker"
+
+conditions = ["Near Mint", "Very Fine", "Fine", "Very Good", "Good", "Fair", "Poor"]
+
+User.destroy_all
+ComicBook.destroy_all
+Purchase.destroy_all
+
+10.times do
+  user = User.new(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123456"
+    )
+  user.save
+  puts "Creating #{user.username}"
+end
+
+10.times do
+  comic_book = ComicBook.new(
+    series: Faker::DcComics.title,
+    name: Faker::DcComics.name,
+    issue: Faker::Number.within(range: 1..100),
+    release_date: Faker::Number.within(range: 1930..2021),
+    writer: Faker::Book.author,
+    artist: Faker::Artist.name,
+    location: Faker::Address.city,
+    price: Faker::Commerce.price,
+    condition: conditions.sample.to_s,
+    description: Faker::JapaneseMedia::OnePiece.quote
+    # user_id: User.sample.id
+    )
+  comic_book.save
+  puts "Comic books created!"
+end
