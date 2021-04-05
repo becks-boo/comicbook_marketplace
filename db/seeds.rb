@@ -10,6 +10,7 @@ require "open-uri"
 require "faker"
 
 conditions = ["Near Mint", "Very Fine", "Fine", "Very Good", "Good", "Fair", "Poor"]
+status = ["Accepted", "Pending", "Declined"]
 
 User.destroy_all
 ComicBook.destroy_all
@@ -44,4 +45,19 @@ end
   # save! to show issue and interrupt the save
   comic_book.save!
   puts "Comic books created!"
+end
+
+count = 0
+
+4.times do
+  comic_book = ComicBook.all.sample
+
+  purchase = Purchase.new(
+    status: status.sample.to_s,
+    value: comic_book.price,
+    comic_book_id: comic_book.id,
+    user_id: User.all.sample.id
+    )
+  purchase.save!
+  puts "Purchase number #{count += 1} created!"
 end
