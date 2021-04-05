@@ -21,7 +21,8 @@ Purchase.destroy_all
     email: Faker::Internet.email,
     password: "123456"
     )
-  user.save
+  # save! to show issue and interrupt the save
+  user.save!
   puts "Creating #{user.username}"
 end
 
@@ -34,11 +35,13 @@ end
     writer: Faker::Book.author,
     artist: Faker::Artist.name,
     location: Faker::Address.city,
+    quantity: rand(1..9),
     price: Faker::Commerce.price,
     condition: conditions.sample.to_s,
-    description: Faker::JapaneseMedia::OnePiece.quote
-    # user_id: User.sample.id
+    description: Faker::JapaneseMedia::OnePiece.quote,
+    user_id: User.all.sample.id
     )
-  comic_book.save
+  # save! to show issue and interrupt the save
+  comic_book.save!
   puts "Comic books created!"
 end
