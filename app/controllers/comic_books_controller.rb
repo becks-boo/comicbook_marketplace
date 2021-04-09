@@ -1,6 +1,12 @@
 class ComicBooksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @comic_books = ComicBook.all
+    @comic_books = policy_scope(ComicBook)
+  end
+
+  def show
+    @comic_book = ComicBook.find(params[:id])
+    authorize @comic_book
   end
 end

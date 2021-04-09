@@ -1,0 +1,9 @@
+<h1>The list of current comic books on sale:</h1>
+
+<ul>
+  <% @comic_books.each do |book| %>
+      <li><%= link_to book.name, comic_book_path(book) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Home", root_path %>
