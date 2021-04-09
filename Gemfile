@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # faker gem for seeding
 gem 'faker'
+
+# pundit gem for authorization
+gem 'pundit'
