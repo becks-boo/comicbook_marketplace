@@ -12,10 +12,10 @@ require "faker"
 conditions = ["Near Mint", "Very Fine", "Fine", "Very Good", "Good", "Fair", "Poor"]
 status = ["Accepted", "Pending", "Declined"]
 
-User.destroy_all
-ComicBook.destroy_all
 Purchase.destroy_all
 Review.destroy_all
+User.destroy_all
+ComicBook.destroy_all
 
 10.times do
   user = User.new(
