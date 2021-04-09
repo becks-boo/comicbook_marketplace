@@ -15,6 +15,7 @@ status = ["Accepted", "Pending", "Declined"]
 User.destroy_all
 ComicBook.destroy_all
 Purchase.destroy_all
+Review.destroy_all
 
 10.times do
   user = User.new(
@@ -61,3 +62,17 @@ count = 0
   purchase.save!
   puts "Purchase number #{count += 1} created!"
 end
+
+4.times do
+  comic_book = ComicBook.all.sample
+
+  review = Review.new(
+    description: Faker::Quote.yoda,
+    rating: rand(1..5),
+    author_id: User.all.sample.id,
+    seller_id: comic_book.user_id
+    )
+  review.save!
+  puts "Reviews created!"
+end
+
