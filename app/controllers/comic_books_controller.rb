@@ -28,6 +28,24 @@ class ComicBooksController < ApplicationController
     authorize @comic_book
   end
 
+  def edit
+    @comic_book = ComicBook.find(params[:id])
+
+    authorize @comic_book
+  end
+
+  def update
+    @comic_book = ComicBook.find(params[:id])
+
+    if @comic_book.update(comic_book_params)
+      redirect_to @comic_book, notice: "Comic Book was succesfully updated."
+    else
+      render :edit
+    end
+
+    authorize @comic_book
+  end
+
   private
 
   def comic_book_params
