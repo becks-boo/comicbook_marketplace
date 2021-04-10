@@ -10,14 +10,27 @@ class ComicBooksController < ApplicationController
     authorize @comic_book
   end
 
-  # def create
-  #   @comic_book = ComicBook.new
+  def create
+    @comic_book = ComicBook.new(comic_book_params)
+    # Is it necessary to get current_user?
+    @comic_book.user = current_user
+    authorize @comic_book
 
-  # end
+    if @comic_book.save
+      redirect_to comic_book_path(@comic_book)
+    else
+      render :new
+    end
+  end
 
   def show
     @comic_book = ComicBook.find(params[:id])
     authorize @comic_book
   end
 
+  private
+
+  def comic_book_params
+    params.require(:comic_book).permit(:series, :name, :issue, :release_date, :writer, :artist, :location, :quantity, :price, :condition, :description)
+  end
 end
