@@ -7,6 +7,7 @@ class ComicBooksController < ApplicationController
 
   def new
     @comic_book = ComicBook.new
+    authorize @comic_book
   end
 
   # def create
