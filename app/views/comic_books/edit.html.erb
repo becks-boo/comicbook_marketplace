@@ -1,16 +1,3 @@
 <h1>Edit your Comic Book:</h1>
 
-<%= simple_form_for @comic_book do |f| %>
-  <%= f.input :series %>
-  <%= f.input :name %>
-  <%= f.input :issue %>
-  <%= f.input :release_date %>
-  <%= f.input :writer %>
-  <%= f.input :artist %>
-  <%= f.input :quantity %>
-  <%= f.input :condition %>
-  <%= f.input :description %>
-  <%= f.input :location %>
-  <%= f.input :price %>
-  <%= f.submit "Edit your Comic Book"%>
-<% end %>
+<%= render "edit_form", comic_book: @comic_book %>

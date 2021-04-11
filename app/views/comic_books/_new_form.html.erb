@@ -1,0 +1,14 @@
+<%= simple_form_for @comic_book do |f| %>
+  <%= f.input :series %>
+  <%= f.input :name %>
+  <%= f.input :issue %>
+  <%= f.input :release_date %>
+  <%= f.input :writer %>
+  <%= f.input :artist %>
+  <%= f.input :quantity %>
+  <%= f.input :condition %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :price %>
+  <%= f.submit "Add a Comic Book"%>
+<% end %>
