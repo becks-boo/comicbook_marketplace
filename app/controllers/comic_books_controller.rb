@@ -1,5 +1,6 @@
 class ComicBooksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_comic_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @comic_books = policy_scope(ComicBook)
@@ -24,19 +25,14 @@ class ComicBooksController < ApplicationController
   end
 
   def show
-    @comic_book = ComicBook.find(params[:id])
     authorize @comic_book
   end
 
   def edit
-    @comic_book = ComicBook.find(params[:id])
-
     authorize @comic_book
   end
 
   def update
-    @comic_book = ComicBook.find(params[:id])
-
     if @comic_book.update(comic_book_params)
       redirect_to @comic_book, notice: "Comic Book was succesfully updated."
     else
@@ -47,7 +43,6 @@ class ComicBooksController < ApplicationController
   end
 
   def destroy
-    @comic_book = ComicBook.find(params[:id])
     @comic_book.destroy
 
     redirect_to comic_books_path
@@ -57,6 +52,10 @@ class ComicBooksController < ApplicationController
   end
 
   private
+
+  def set_comic_book
+    @comic_book = ComicBook.find(params[:id])
+  end
 
   def comic_book_params
     params.require(:comic_book).permit(:series, :name, :issue, :release_date, :writer, :artist, :location, :quantity, :price, :condition, :description)
