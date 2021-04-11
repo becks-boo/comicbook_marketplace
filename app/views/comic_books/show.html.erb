@@ -6,3 +6,7 @@
   <% end %>
 </ul>
 
+<%= link_to "Delete #{@comic_book.name}",
+            comic_book_path(@comic_book),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>

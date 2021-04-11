@@ -46,6 +46,16 @@ class ComicBooksController < ApplicationController
     authorize @comic_book
   end
 
+  def destroy
+    @comic_book = ComicBook.find(params[:id])
+    @comic_book.destroy
+
+    redirect_to comic_books_path
+    # later it should redirect to dashboard
+
+    authorize @comic_book
+  end
+
   private
 
   def comic_book_params
