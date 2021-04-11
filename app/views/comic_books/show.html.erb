@@ -1,0 +1,15 @@
+<h1>This is comic book is on sale:</h1>
+
+<ul>
+  <% @comic_book.attributes.each do |attr| %>
+    <li><%= attr %></li>
+  <% end %>
+</ul>
+
+<% if @comic_book.user_id == current_user.id %>
+  <%= link_to "Edit", edit_comic_book_path(@comic_book) %>
+  <%= link_to "Delete #{@comic_book.name}",
+              comic_book_path(@comic_book),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>
