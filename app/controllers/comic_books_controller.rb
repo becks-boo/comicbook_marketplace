@@ -13,7 +13,7 @@ class ComicBooksController < ApplicationController
 
   def create
     @comic_book = ComicBook.new(comic_book_params)
-    # Is it necessary to get current_user?
+
     @comic_book.user = current_user
     authorize @comic_book
 
@@ -25,11 +25,9 @@ class ComicBooksController < ApplicationController
   end
 
   def show
-    authorize @comic_book
   end
 
   def edit
-    authorize @comic_book
   end
 
   def update
@@ -38,8 +36,6 @@ class ComicBooksController < ApplicationController
     else
       render :edit
     end
-
-    authorize @comic_book
   end
 
   def destroy
@@ -47,14 +43,13 @@ class ComicBooksController < ApplicationController
 
     redirect_to comic_books_path
     # later it should redirect to dashboard
-
-    authorize @comic_book
   end
 
   private
 
   def set_comic_book
     @comic_book = ComicBook.find(params[:id])
+    authorize @comic_book
   end
 
   def comic_book_params
