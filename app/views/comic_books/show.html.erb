@@ -6,6 +6,14 @@
   <% end %>
 </ul>
 
+<% if @comic_book.pictures.attached? %>
+  <% @comic_book.pictures.each do |picture| %>
+    <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% else %>
+  <p>No Foto...</p>
+<% end %>
+
 <% if @comic_book.user_id == current_user.id %>
   <%= link_to "Edit", edit_comic_book_path(@comic_book) %>
   <%= link_to "Delete #{@comic_book.name}",
