@@ -66,3 +66,6 @@ gem 'faker'
 
 # pundit gem for authorization
 gem 'pundit'
+
+# cloudinary gem for image upload
+gem 'cloudinary'

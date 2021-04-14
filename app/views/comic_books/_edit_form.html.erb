@@ -10,5 +10,6 @@
   <%= f.input :description %>
   <%= f.input :location %>
   <%= f.input :price %>
+  <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
   <%= f.submit "Edit your Comic Book"%>
 <% end %>
