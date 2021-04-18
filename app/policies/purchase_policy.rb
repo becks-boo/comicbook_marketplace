@@ -1,4 +1,6 @@
 class PurchasePolicy < ApplicationPolicy
+  attr_reader :purchase
+
   class Scope < Scope
     def resolve
       scope.where(user: @user)
@@ -6,6 +8,6 @@ class PurchasePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user_is_owner_of_record?
   end
 end

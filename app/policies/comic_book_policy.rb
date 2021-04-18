@@ -18,14 +18,14 @@ class ComicBookPolicy < ApplicationPolicy
   end
 
   def edit?
-    @record.user == @user
+    user_is_owner_of_record?
   end
 
   def update?
-    @record.user == @user
+    user_is_owner_of_record?
   end
 
   def destroy?
-    @record.user == @user
+    user_is_owner_of_record?
   end
 end
