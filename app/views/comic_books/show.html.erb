@@ -14,6 +14,9 @@
   <p>No Foto...</p>
 <% end %>
 
+<!-- Create Button to Buy -->
+<p>Buy Button</p>
+
 <% if @comic_book.user_id == current_user.id %>
   <%= link_to "Edit", edit_comic_book_path(@comic_book) %>
   <%= link_to "Delete #{@comic_book.name}",
