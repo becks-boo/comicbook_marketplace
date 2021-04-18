@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :comic_books
-  resources :purchase
+  resources :purchases, only: [:show]
 
   get '/dashboard', to: 'users#dashboard', as: 'dashboard'
 end
