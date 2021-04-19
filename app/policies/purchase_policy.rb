@@ -10,4 +10,8 @@ class PurchasePolicy < ApplicationPolicy
   def show?
     user_is_owner_of_record?
   end
+
+  def create?
+    true
+  end
 end

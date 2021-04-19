@@ -1,21 +1,25 @@
-<h1>This is comic book is on sale:</h1>
+<h1>This comic book is on sale:</h1>
 
-<ul>
-  <% @comic_book.attributes.each do |attr| %>
-    <li><%= attr %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <ul>
+    <% @comic_book.attributes.each do |attr| %>
+      <li><%= attr %></li>
+    <% end %>
+  </ul>
 
-<% if @comic_book.pictures.attached? %>
-  <% @comic_book.pictures.each do |picture| %>
-    <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+  <% if @comic_book.pictures.attached? %>
+    <% @comic_book.pictures.each do |picture| %>
+      <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% else %>
+    <p>No Foto...</p>
   <% end %>
-<% else %>
-  <p>No Foto...</p>
-<% end %>
+</div>
 
 <!-- Create Button to Buy -->
-<p>Buy Button</p>
+<div>
+<p><%= link_to "Buy Comic Book", purchases_path(comic_book: @comic_book), method: :post %></p>
+</div>
 
 <% if @comic_book.user_id == current_user.id %>
   <%= link_to "Edit", edit_comic_book_path(@comic_book) %>
