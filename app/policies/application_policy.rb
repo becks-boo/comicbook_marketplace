@@ -34,10 +34,6 @@ class ApplicationPolicy
     false
   end
 
-  def user_is_owner_of_record?
-    @record.user == @user
-  end
-
   class Scope
     attr_reader :user, :scope
 
@@ -50,4 +46,11 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def user_is_owner_of_record?
+    @record.user == @user
+  end
+
 end
