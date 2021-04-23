@@ -1,5 +1,5 @@
-<section>
-  <div class="banner container">
+<section class="container">
+  <div class="banner d-flex justify-content-center align-items-center">
     <div class="banner-content">
       <p>Search for a Comic Book:</p>
       <label for="search" class="visuallyhidden">Search Comic Books</label>
@@ -7,4 +7,40 @@
       <button type="submit">Search</button>
     </div>
   </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="description">
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      </p>
+    </div>
+    <%= image_tag("pic-home", height: "320", width: "460") %>
+  </div>
+
+  <div class="my-5 d-flex justify-content-center align-items-center">
+    <div>
+      <p>Sign up for free and start managing your collection</p>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+
+  <footer class="d-flex justify-content-between align-items-end">
+    <div class="footer-links">
+      <%= link_to "Facebook", "https://facebook.com", target: "_blank" %>
+      <%= link_to "Facebook", "https://facebook.com", target: "_blank" %>
+      <%= link_to "Facebook", "https://facebook.com", target: "_blank" %>
+      <%= link_to "Facebook", "https://facebook.com", target: "_blank" %>
+    </div>
+
+    <p>This app was made with 🖤.</p>
+  </footer>
 </section>
