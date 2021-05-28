@@ -3,7 +3,12 @@ class ComicBooksController < ApplicationController
   before_action :set_comic_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comic_books = policy_scope(ComicBook)
+    if params[:search].blank?
+      @comic_books = policy_scope(ComicBook)
+    else
+      @parameter = params[:search].downcase
+      @comic_books = policy_scope(ComicBook).where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end
   end
 
   def new
