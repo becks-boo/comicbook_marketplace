@@ -7,7 +7,7 @@ class ComicBooksController < ApplicationController
       @comic_books = policy_scope(ComicBook)
     else
       @parameter = params[:search].downcase
-      @comic_books = policy_scope(ComicBook).where("lower(name) LIKE :search", search: "%#{@parameter}%")
+      @comic_books = policy_scope(ComicBook).where("name ILIKE :search", search: "%#{@parameter}%")
     end
   end
 
